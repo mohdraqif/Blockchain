@@ -97,15 +97,6 @@ class Blockchain {
 
 let blockChain = new Blockchain
 
-// console.log('Mining block 1... ')
-// blockChain.addBlock(new Block('1', '06-02-2020', { amount: 10 }))
-
-// console.log('Mining block 2... ')
-// blockChain.addBlock(new Block('2', '06-02-2020', { amount: 12 }))
-
-// console.log('Mining block 3... ')
-// blockChain.addBlock(new Block('3', '07-02-2020', { amount: 15 }))
-
 console.log(JSON.stringify(blockChain, null, 4))
 blockChain.createTransaction(new Transaction('address1', 'address2', 100))
 
