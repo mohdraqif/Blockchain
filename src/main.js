@@ -1,5 +1,6 @@
 // Implementation of a BLOCKCHAIN
 const { Transaction, Blockchain } = require('./blockchain')
+var readlineSync = require('readline-sync');
 const EC = require('elliptic').ec
 const ec = new EC('secp256k1')
 
@@ -28,23 +29,43 @@ blockChain.addTransaction(tx4)
 
 // Mining the transactions of the blocks
 
-console.log('Mining block. Please wait.....')
+console.log('Miner started!')
+console.log('\nMining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
-console.log('Mining block. Please wait.....')
+console.log('\nMining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
-console.log('Mining block. Please wait.....')
+console.log('\nMining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
-console.log('Mining block. Please wait.....')
+console.log('\nMining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
 
 // Formatting the blockchain
+const PASSWORD = 'raqif@12345'
 
-console.log(JSON.stringify(blockChain, null, 4))
+if(readlineSync.keyInYN('\nDo you want to see the chain?')) {
 
-console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`);
+    const password1 = readlineSync.question('\nEnter your password of chain: ', {
+        hideEchoBack: true
+    })
+    if(password1 === PASSWORD) {
+        const password2 = readlineSync.question('\nConfirm your password again: ', {
+            hideEchoBack: true
+        })
 
-console.log('Is the blockchain valid? ' + blockChain.isChainValid())
+        if(password1 === password2) {
+            console.log(JSON.stringify(blockChain, null, 4))   
+            console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`)
+            // console.log('Is the blockchain valid? ' + blockChain.isChainValid())
+        } else {
+            console.log('Hmmm! Passwords do not match.Try again')
+        }
+    } else {
+        console.log('Sorry! Wrong password.')
+    }
+} else {
+    console.log('\nYou chose to hide the chain. Nice decision!')
+}
