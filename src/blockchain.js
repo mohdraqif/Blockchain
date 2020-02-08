@@ -71,7 +71,7 @@ class Blockchain {
     constructor() {
         this.chain = [this.generateGenesisBlock()]
         this.pendingTransactions = []
-        this.difficulty = 2
+        this.difficulty = 5
         this.miningReward = 100
     }
 
@@ -126,15 +126,12 @@ class Blockchain {
     isChainValid() {
         for(let i = 1; i < this.chain.length; i++) {
             const currentBlock = this.chain[i]
-            const previousBlock = this.chain[i - 1]
+            // const previousBlock = this.chain[i - 1]
 
            if(!currentBlock.hasValidTransactions()) {
                return false
            }
-           
-            if(currentBlock.previousHash !== previousBlock.hash) {
-                return false
-            }
+
             if(currentBlock.hash !== currentBlock.calculateHash()) {
                 return false
             }

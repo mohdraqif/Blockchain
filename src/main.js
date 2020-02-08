@@ -5,29 +5,46 @@ const ec = new EC('secp256k1')
 
 const myKey = ec.keyFromPrivate('fc16c99e18e8a5c787a22239eef50d9d46315f69883485ae28b530aeaedb0bbb')
 const myWalletAddress = myKey.getPublic('hex')
-
-
 const blockChain = new Blockchain()
+
+// Transactions of the blockchain
 
 const tx1 = new Transaction(myWalletAddress, 'address2', 10)
 tx1.signTransaction(myKey)
 blockChain.addTransaction(tx1)
 
-// console.log(JSON.stringify(blockChain, null, 4))
-
-console.log('Mining block...')
-blockChain.minePendingTransations(myWalletAddress)
-
-
-const tx2 = new Transaction(myWalletAddress, 'address1', 20)
+const tx2 = new Transaction(myWalletAddress, 'address1', 15)
 tx2.signTransaction(myKey)
 blockChain.addTransaction(tx2)
 
-console.log('Mining block...')
+const tx3 = new Transaction(myWalletAddress, 'address1', 5)
+tx3.signTransaction(myKey)
+blockChain.addTransaction(tx3)
+
+const tx4 = new Transaction(myWalletAddress, 'address1', 5)
+tx4.signTransaction(myKey)
+blockChain.addTransaction(tx4)
+
+
+// Mining the transactions of the blocks
+
+console.log('Mining block. Please wait.....')
+blockChain.minePendingTransations(myWalletAddress)
+
+console.log('Mining block. Please wait.....')
+blockChain.minePendingTransations(myWalletAddress)
+
+console.log('Mining block. Please wait.....')
+blockChain.minePendingTransations(myWalletAddress)
+
+console.log('Mining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
 
-console.log(`Balance of witcher5671 is ${blockChain.getBalanceOfAddress(myWalletAddress)}`);
-// blockChain.chain[1].data = { amount: 100 }
-// blockChain.chain[1].hash = blockChain.chain[1].calculateHash()
-// console.log('Is the blockchain valid? ' + blockChain.isChainValid())
+// Formatting the blockchain
+
+console.log(JSON.stringify(blockChain, null, 4))
+
+console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`);
+
+console.log('Is the blockchain valid? ' + blockChain.isChainValid())
