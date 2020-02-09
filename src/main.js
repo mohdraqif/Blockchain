@@ -43,7 +43,8 @@ console.log('\nMining block. Please wait.....')
 blockChain.minePendingTransations(myWalletAddress)
 
 
-// Formatting the blockchain
+// Formatting the blockchain access
+
 const PASSWORD = 'raqif@12345'
 
 if(readlineSync.keyInYN('\nDo you want to see the chain?')) {
@@ -57,12 +58,16 @@ if(readlineSync.keyInYN('\nDo you want to see the chain?')) {
         })
 
         if(password1 === password2) {
-            console.log(JSON.stringify(blockChain, null, 4))   
-            console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`)
-            // console.log('Is the blockchain valid? ' + blockChain.isChainValid())
+            console.log('\nWelcome Mohd!')
+            
+            setInterval(() => {
+                console.log(JSON.stringify(blockChain, null, 4))   
+                console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`)
+            }, 2000);
         } else {
             console.log('Hmmm! Passwords do not match.Try again')
         }
+        
     } else {
         console.log('Sorry! Wrong password.')
     }
