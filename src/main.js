@@ -60,9 +60,9 @@ if(readlineSync.keyInYN('\nDo you want to see the chain?')) {
         if(password1 === password2) {
             console.log('\nWelcome Mohd!')
             
-            setInterval(() => {
+            setTimeout(() => {
                 console.log(JSON.stringify(blockChain, null, 4))   
-                console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`)
+                console.log(`\nBalance of witcher5671 is $ ${blockChain.getBalanceOfAddress(myWalletAddress)}`)    
             }, 2000);
         } else {
             console.log('Hmmm! Passwords do not match.Try again')
