@@ -54,7 +54,7 @@ class Block {
             this.nonce++
             this.hash = this.calculateHash()
         }
-        console.log('Block mined: ' + this.hash)
+        console.log('Block hash: ' + this.hash)
     }
 
     hasValidTransactions() {
@@ -71,7 +71,7 @@ class Blockchain {
     constructor() {
         this.chain = [this.generateGenesisBlock()]
         this.pendingTransactions = []
-        this.difficulty = 4
+        this.difficulty = 5
         this.miningReward = 100
     }
 
